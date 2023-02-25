@@ -1,0 +1,30 @@
+.Datas{
+  background-color: aquamarine;
+  /* border: 1px solid; */
+  margin: 10px;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.country{
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+   border-radius: 20px;
+}
+.para{
+  /* max-width: 100%; */
+  --max-lines:6;
+  display:-webkit-box;
+  -webkit-line-clamp: var(--max-lines);
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* white-space: nowrap;
+  text-overflow: ellipsis; */
+}
+.header-design{
+  background-image: url(images/banner_1.png);
+  /* background-repeat: no-repeat; */
+  background-position: center;
+}
