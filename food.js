@@ -96,7 +96,7 @@ const displayModal = meal =>
   `;
 }
 
-// process Search
+// process Search function
 const processSearch = (datalimit) =>
 {
   loder(true)
@@ -106,6 +106,14 @@ const processSearch = (datalimit) =>
 
 }
 
+// input enter field
+document.getElementById('search-input').addEventListener('keypress',function(event){
+  console.log(event)
+  if(event.key === 'Enter')
+  {
+    processSearch(10);
+  }
+})
 
 // working the search button
 function searchbtn() {
