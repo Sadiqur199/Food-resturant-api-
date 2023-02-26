@@ -1,17 +1,41 @@
 
 // call the dayanamic api
-const locatedFood = (searchText)=>{
+const locatedFood = (searchText, datalimit)=>{
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
   console.log(url)
   fetch(url)
   .then(res=>res.json())
-  .then(data=>dispalyFood(data.meals))
+  .then(data=>dispalyFood(data.meals,datalimit))
 }
 
 // work the food card 
-const dispalyFood = meals =>{
+const dispalyFood = (meals,datalimit) =>{
   const cardContainer = document.getElementById('card-container')
   cardContainer.innerText = '';
+  
+  // slice data
+  //  show all button 
+  const showAll = document.getElementById('show-all')
+  if(datalimit&& meals.length >5)
+  {
+    meals = meals.slice(0,5);
+    showAll.classList.remove('d-none')
+  }
+  else{
+    showAll.classList.add('d-none')
+  }
+  //  no result found
+  //  const showEmptyResult = document.getElementById('show-empty-result');
+  //  if(meals.length === 0)
+  //  {
+  //   showEmptyResult.classList.remove('d-none');
+  //  }
+  //  else {
+  //   showEmptyResult.classList.add('d-none');
+
+  //  }
+
+  //  card creat
   meals.forEach(meal => {
     console.log(meal)
     const creatDiv = document.createElement('div')
@@ -34,14 +58,10 @@ const dispalyFood = meals =>{
  `
     cardContainer.appendChild(creatDiv)
   });
+  // stop spinner
+  loder(false);
 }
 
-// working the search button
-function searchbtn() {
-  const  searchText = document.getElementById('search-input').value;
-   console.log(searchText)
-   locatedFood(searchText)
-}
 
 // async use to food details
 const loadMealDetails =async (idMeal) =>{
@@ -74,6 +94,39 @@ const displayModal = meal =>
   <img class = "img-fluid mb-" src="${meal.strMealThumb}"  alt="...">
    <p>${meal.strInstructions}</p>
   `;
+}
+
+// process Search
+const processSearch = (datalimit) =>
+{
+  loder(true)
+  const  searchText = document.getElementById('search-input').value;
+   console.log(searchText)
+   locatedFood(searchText,datalimit)
+
+}
+
+
+// working the search button
+function searchbtn() {
+   processSearch(10);
+}
+
+function showAll(){
+  processSearch();
+}
+
+// spinner working
+
+const loder = islodding =>{
+  const spinner = document.getElementById('spinner');
+  if(islodding)
+  {
+    spinner.classList.remove('d-none');
+  }
+  else{
+    spinner.classList.add('d-none');
+  }
 }
 
 locatedFood('');

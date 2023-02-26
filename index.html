@@ -25,11 +25,24 @@
 <!-- search field  -->
 
 
-  <section class="container">
+<section>
+  <div class="container">
     <div id="card-container" class="row row-cols-1 row-cols-md-3 g-4">
     </div>
-  </section>
+  </div>
 
+   
+  <!-- Show All Button -->
+  <div id="show-all" class="text-center mt-3 d-none">
+    <button onclick="showAll()" id="btn-show-all" class="btn btn-primary" type="submit">Show All..</button>
+  </div>
+</section>
+
+  <!-- no result found -->
+  <!-- <div id="show-empty-result" class="mt-5 d-none">
+    <h3 class="text-center">No Result Found <img class="image-design" src="images/sad-face-transparent-png-crying-emoji-transparent-background-11562873850hiicomfwuq-removebg-preview.png" alt=""></h3>
+
+  </div> -->
 
   <section>
 
@@ -50,6 +63,16 @@
       </div>
     </div>
 
+  </section>
+
+  <!-- spinner  -->
+
+  <section id="spinner" class="d-none">
+    <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
+      <div  class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
   </section>
   </main>
 
