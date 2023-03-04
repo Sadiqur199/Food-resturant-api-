@@ -108,7 +108,7 @@ const processSearch = (datalimit) =>
 
 // input enter field
 document.getElementById('search-input').addEventListener('keypress',function(event){
-  console.log(event)
+  console.log(event.key)
   if(event.key === 'Enter')
   {
     processSearch(10);
